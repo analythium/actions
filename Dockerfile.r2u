@@ -11,7 +11,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-luatex \
     texlive-plain-generic \
     texlive-science \
-    texlive-xetex
+    texlive-xetex \
+    git \
+    rsync
 RUN install.r \
     rmarkdown \
     knitr \
