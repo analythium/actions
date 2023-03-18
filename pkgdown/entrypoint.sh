@@ -4,9 +4,10 @@
 # $ git add entrypoint.sh
 # $ git update-index --chmod=+x entrypoint.sh
 
-echo "\n***\nTHIS IS USING THE PKGDOWN DIR\n***\n"
-
 deps-cli all
+Rscript -e 'devtools::document()'
 Rscript -e 'devtools::check()'
-echo "\n***\n---PKGDOWN---\n***\n"
-Rscript -e 'pkgdown::build_site_github_pages(install=TRUE)'
+
+Rscript -e 'devtools::install()'
+Rscript -e 'devtools::build_readme()'
+Rscript -e 'pkgdown::build_site_github_pages()'
