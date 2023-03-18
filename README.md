@@ -21,5 +21,5 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Check
-        uses: analythium/actions@v1.2
+        uses: analythium/actions/pkgdown@v1.5
 ```
