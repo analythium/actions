@@ -4,5 +4,7 @@
 # $ git add entrypoint.sh
 # $ git update-index --chmod=+x entrypoint.sh
 
+echo "THIS IS USING THE TEST DIR"
+
 deps-cli all
 Rscript -e 'devtools::check()'
