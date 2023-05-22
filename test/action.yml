@@ -1,16 +1,15 @@
 name: 'Analythium Actions: R CMD check TEST'
 description: 'Check an R package'
-author: 'Analythium'
+author: 'Peter Solymos'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  working-directory:
+    description: 'The directory where the package can be found.'
+    default: '.'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+  image: ghcr.io/analythium/actions:latest
+  steps:
+    - name: Install dependencies
+      run: deps-cli all --dir ${{ inputs.working-directory }}
+    - name: Check R package
+      run: R -q -e 'devtools::check("${{ inputs.working-directory }}", document=TRUE)'
